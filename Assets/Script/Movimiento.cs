@@ -15,6 +15,7 @@ public class Movimiento : MonoBehaviour
 
 
     public int bloquesCount = 37;
+    public TextMeshProUGUI bloquesFinalText;
     public TextMeshProUGUI bloquesText;
   //  public AudioClip Bloquefx;
 
@@ -27,7 +28,7 @@ public class Movimiento : MonoBehaviour
         
         
         bloquesCount = 37;
-
+    
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class Movimiento : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("bloquesss"))
         {
@@ -58,6 +59,7 @@ public class Movimiento : MonoBehaviour
         {
 
             bloquesText.text = bloquesCount.ToString();
+            bloquesFinalText.text = bloquesCount.ToString();
             other.gameObject.SetActive(false);
          //   AudioSource.PlayClipAtPoint(Bloquefx, transform.position);
 

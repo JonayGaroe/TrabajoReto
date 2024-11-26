@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - bloquesss
+  - Vertical
+  - Horizontal
+  - Pared
+  - Paddle
+  - Palo
   layers:
   - Default
   - TransparentFX

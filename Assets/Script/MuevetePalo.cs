@@ -1,38 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MuevetePalo : MonoBehaviour
 {
-    // Start is called before the first frame update
 
 
+    [SerializeField]
+    private float speed = 7f;
+    [SerializeField]
+    private float minX = 132f;  // Límite mínimo en el eje X (por ejemplo, la pared izquierda)
+    [SerializeField]
+    private float maxX = 980f;   // Límite máximo en el eje X (por ejemplo, la pared derecha)
+    private Rigidbody2D paloRb;
 
-    public float movementEjeX;
-    public float fastmovement = 20f;
-    //public float movementEjeY;
-    //public float movementEjeZ;
-     Rigidbody rb;
-   // bool PartidaOn = false;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
+
+        paloRb = GetComponent<Rigidbody2D>();
+
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //ForceMode.Impulse
-        if (Input.GetAxis("Horizontal") != 1)
-        {
-       
-           Vector3 movement = new Vector3();
-           movement.x = Input.GetAxis("Horizontal") * Time.deltaTime * fastmovement;
-           rb.AddForce(movement * fastmovement);
-            // transform.Translate(movementEjeX, movementEjeY, movementEjeZ);
 
-            // }
-        }
+        // Obtener el movimiento horizontal
+        float movement = Input.GetAxisRaw("Horizontal");
+
+        // Calcular la nueva posición en el eje X
+        float newPosX = transform.position.x + movement * speed * Time.deltaTime;
+
+        // Limitar la posición en el eje X para que no traspase las paredes
+        newPosX = Mathf.Clamp(newPosX, minX, maxX);
+
+        // Asignar la nueva posición manteniendo la posición Y igual
+        transform.position = new Vector3(newPosX, transform.position.y, transform.position.z);
+
+
+
+        //float movement = Input.GetAxisRaw("Horizontal");
+        // transform.position += new Vector3(movement, 0 * speed * Time.deltaTime);
+
+
+
+
+
     }
+
+
+
 }
