@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine;
 
-public class Restart : MonoBehaviour
-
+public class Restartcrip : MonoBehaviour
 {
     [SerializeField]
     GameObject finalPartida;
 
-     [SerializeField]
+    [SerializeField]
     GameObject empiezaPartida;
 
     bool estaJugando = false;
@@ -18,13 +16,13 @@ public class Restart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void EmpezarJuego()
@@ -40,17 +38,14 @@ public class Restart : MonoBehaviour
 
     }
 
-
-
-
     public void ReiniciarJuego()
     {
 
         estaJugando = false;
-        SceneManager.LoadScene("otraCosaa");
+       // SceneManager.LoadScene("otraCosaa");
         finalPartida.SetActive(false);
         empiezaPartida.SetActive(true);
-    
+
 
     }
 
